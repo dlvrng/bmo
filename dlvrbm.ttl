@@ -1,0 +1,829 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix dlvr: <https://w3id.org/dlvr/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+
+# Ontology Declaration with Best Practices
+<https://w3id.org/dlvr/ontology> rdf:type owl:Ontology ;
+    # Basic Metadata
+    dc:title "DLVR Logistics Business Model Ontology"@en ;
+    dcterms:title "DLVR Logistics Business Model Ontology"@en ;
+    dc:description "A comprehensive ontology representing the business model of DLVR Logistics, a last-mile delivery platform in Nigeria. This ontology models key business components including customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partnerships, and cost structure."@en ;
+    dcterms:description "A comprehensive ontology representing the business model of DLVR Logistics, a last-mile delivery platform in Nigeria. This ontology models key business components including customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partnerships, and cost structure."@en ;
+    
+    # Versioning
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <https://w3id.org/dlvr/ontology/1.0.0> ;
+    owl:priorVersion <https://w3id.org/dlvr/ontology/0.9.0> ;
+    dcterms:issued "2025-03-24"^^xsd:date ;
+    dcterms:modified "2025-03-24"^^xsd:date ;
+    
+    # Creator/Contributor Information
+    dc:creator "DLVR Logistics"@en ;
+    dcterms:creator [
+        a foaf:Organization ;
+        foaf:name "DLVR Logistics" ;
+        foaf:homepage <http://www.dlvr.ng> ;
+    ] ;
+    dcterms:contributor [
+        a foaf:Person ;
+        foaf:name "Chu Nnodu" ;
+        foaf:mbox <mailto:chu@chunnodu.com> ;
+    ] ;
+    
+    # Licensing
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    cc:license <http://creativecommons.org/licenses/by/4.0/> ;
+    cc:attributionName "DLVR Logistics"@en ;
+    cc:attributionURL <http://www.dlvr.ng> ;
+    
+    # Provenance
+    prov:wasGeneratedBy [
+        a prov:Activity ;
+        prov:startedAtTime "2025-03-24T10:00:00Z"^^xsd:dateTime ;
+        prov:endedAtTime "2025-03-24T15:30:00Z"^^xsd:dateTime ;
+        prov:wasAssociatedWith [
+            a prov:Agent, foaf:Organization ;
+            foaf:name "DLVR Logistics" ;
+        ] ;
+    ] ;
+    
+    # Vocabulary Metadata
+    vann:preferredNamespacePrefix "dlvr" ;
+    vann:preferredNamespaceUri "https://w3id.org/dlvr/ontology#" ;
+    voaf:extends schema: ;
+    
+    # Status and Documentation
+    dcterms:status "Stable" ;
+    rdfs:seeAlso <https://github.com/dlvrng/bmo> ;
+    foaf:page <https://github.com/dlvrng/bmo/readme.md> ;
+    
+    # Language and Rights
+    dcterms:language "en" ;
+    dcterms:rights "Copyright (c) 2025 DLVR Logistics"@en ;
+    
+    # Compatibility and Scope
+    dcterms:conformsTo <http://www.w3.org/2002/07/owl> ;
+    dcterms:subject <http://dbpedia.org/resource/Business_model> ,
+                    <http://dbpedia.org/resource/Logistics> ,
+                    <http://dbpedia.org/resource/Last_mile_(transportation)> ;
+    
+    # Additional Information
+    skos:note "This ontology was created to formally represent DLVR Logistics' business model for internal knowledge management and integration with other systems."@en .
+
+# Classes (Using schema.org and custom extensions)
+schema:Organization rdf:type rdfs:Class ;
+    rdfs:label "Organization" ;
+    rdfs:comment "Represents a business entity like DLVR Logistics." .
+
+schema:Service rdf:type rdfs:Class ;
+    rdfs:label "Service" ;
+    rdfs:comment "Represents logistics services offered by DLVR." .
+
+schema:Person rdf:type rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "Represents delivery agents as individuals." .
+
+schema:Offer rdf:type rdfs:Class ;
+    rdfs:label "Offer" ;
+    rdfs:comment "Links services to customers and revenue." .
+
+schema:Action rdf:type rdfs:Class ;
+    rdfs:label "Action" ;
+    rdfs:comment "Represents key activities like delivery operations." .
+
+# Custom classes for BMO-specific concepts
+schema:BusinessModel rdf:type rdfs:Class ;
+    rdfs:label "Business Model" ;
+    rdfs:comment "DLVR's model for creating, delivering, and capturing value." .
+
+schema:Channel rdf:type rdfs:Class ;
+    rdfs:label "Channel" ;
+    rdfs:comment "Means of reaching customers and agents." .
+
+schema:CustomerRelationship rdf:type rdfs:Class ;
+    rdfs:label "Customer Relationship" ;
+    rdfs:comment "Type of relationship with businesses and agents." .
+
+schema:RevenueStream rdf:type rdfs:Class ;
+    rdfs:label "Revenue Stream" ;
+    rdfs:comment "Sources of income for DLVR." .
+
+schema:KeyResource rdf:type rdfs:Class ;
+    rdfs:label "Key Resource" ;
+    rdfs:comment "Assets critical to DLVR's operations." .
+
+schema:CostStructure rdf:type rdfs:Class ;
+    rdfs:label "Cost Structure" ;
+    rdfs:comment "Costs incurred by DLVR." .
+
+dlvr:CustomerSegment rdf:type rdfs:Class ;
+    rdfs:label "Customer Segment" ;
+    rdfs:comment "Specific groups of customers that DLVR targets." .
+
+dlvr:KeyActivity rdf:type rdfs:Class ;
+    rdfs:label "Key Activity" ;
+    rdfs:comment "Essential activities performed by DLVR." .
+
+dlvr:KeyPartner rdf:type rdfs:Class ;
+    rdfs:label "Key Partner" ;
+    rdfs:comment "Strategic partners for DLVR's operations." .
+
+dlvr:ValueProposition rdf:type rdfs:Class ;
+    rdfs:label "Value Proposition" ;
+    rdfs:comment "Products and services that create value for customers." .
+
+dlvr:Product rdf:type rdfs:Class ;
+    rdfs:subClassOf schema:Service ;
+    rdfs:label "Product" ;
+    rdfs:comment "Digital products offered by DLVR." .
+
+dlvr:CustomerStage rdf:type rdfs:Class ;
+    rdfs:label "Customer Stage" ;
+    rdfs:comment "Stages in the customer journey." .
+
+dlvr:Brand rdf:type rdfs:Class ;
+    rdfs:label "Brand" ;
+    rdfs:comment "Brand elements of DLVR." .
+
+# Properties
+schema:customer rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range dlvr:CustomerSegment ;
+    rdfs:label "has customer segment" .
+
+dlvr:belongsTo rdf:type rdf:Property ;
+    rdfs:domain dlvr:CustomerSegment ;
+    rdfs:range dlvr:CustomerCategories ;
+    rdfs:label "belongs to customer category" .
+
+schema:offers rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range dlvr:ValueProposition ;
+    rdfs:label "offers value proposition" .
+
+schema:distributionChannel rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range schema:Channel ;
+    rdfs:label "uses channel" .
+
+schema:knows rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range schema:CustomerRelationship ;
+    rdfs:label "maintains customer relationship" .
+
+schema:priceSpecification rdf:type rdf:Property ;
+    rdfs:domain schema:Offer ;
+    rdfs:range schema:RevenueStream ;
+    rdfs:label "generates revenue stream" .
+
+schema:owns rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range schema:KeyResource ;
+    rdfs:label "relies on key resource" .
+
+schema:potentialAction rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range dlvr:KeyActivity ;
+    rdfs:label "performs key activity" .
+
+schema:partner rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range dlvr:KeyPartner ;
+    rdfs:label "has key partnership" .
+
+schema:cost rdf:type rdf:Property ;
+    rdfs:domain schema:Organization ;
+    rdfs:range schema:CostStructure ;
+    rdfs:label "incurs cost structure" .
+
+dlvr:hasProduct rdf:type rdf:Property ;
+    rdfs:domain dlvr:ValueProposition ;
+    rdfs:range dlvr:Product ;
+    rdfs:label "has product" .
+
+dlvr:hasService rdf:type rdf:Property ;
+    rdfs:domain dlvr:ValueProposition ;
+    rdfs:range schema:Service ;
+    rdfs:label "has service" .
+
+dlvr:hasCustomerStage rdf:type rdf:Property ;
+    rdfs:domain schema:Channel ;
+    rdfs:range dlvr:CustomerStage ;
+    rdfs:label "has customer stage" .
+
+dlvr:hasBrandElement rdf:type rdf:Property ;
+    rdfs:domain schema:KeyResource ;
+    rdfs:range dlvr:Brand ;
+    rdfs:label "has brand element" .
+
+# DLVR Logistics Instance
+schema:DLVRLogistics rdf:type schema:Organization ;
+    schema:name "DLVR Logistics" ;
+    schema:url <http://www.dlvr.ng> ;
+    schema:customer dlvr:VendorSegment ;
+    schema:customer dlvr:DeliveryAgentSegment ;
+    schema:customer dlvr:ComplimentaryServiceProviders ;
+    schema:offers dlvr:DLVRValueProposition ;
+    schema:distributionChannel dlvr:DLVRChannels ;
+    schema:knows dlvr:SelfService ;
+    schema:knows dlvr:PersonalizedService ;
+    schema:knows dlvr:Communities ;
+    schema:knows dlvr:AutomatedServices ;
+    schema:owns dlvr:IntellectualResources ;
+    schema:owns dlvr:HumanResources ;
+    schema:owns dlvr:FinancialResources ;
+    schema:owns dlvr:PlatformResources ;
+    schema:potentialAction dlvr:ContentCreation ;
+    schema:potentialAction dlvr:ContentMarketing ;
+    schema:potentialAction dlvr:ProductDevelopment ;
+    schema:potentialAction dlvr:MarketResearch ;
+    schema:partner dlvr:DeliveryAssociations ;
+    schema:partner dlvr:DeliveryOperators ;
+    schema:partner dlvr:SubjectMatterExperts ;
+    schema:partner dlvr:ServiceProviders ;
+    schema:cost dlvr:SalariesCost ;
+    schema:cost dlvr:OperationCost ;
+    schema:cost dlvr:EquipmentCost ;
+    schema:cost dlvr:LicensesCost ;
+    schema:cost dlvr:InfrastructureCost ;
+    schema:cost dlvr:CommissionCost ;
+    schema:cost dlvr:MarketingCost .
+
+# Customer Segments
+# Main Customer Categories
+dlvr:CustomerCategories rdf:type rdfs:Class ;
+    rdfs:label "Customer Categories" ;
+    rdfs:comment "Main categories of DLVR customers" .
+
+dlvr:DeliveryPersonnel rdf:type dlvr:CustomerCategories ;
+    schema:name "Delivery Personnel" ;
+    schema:description "Individuals who perform delivery services" .
+
+dlvr:ServiceProviders rdf:type dlvr:CustomerCategories ;
+    schema:name "Service Providers" ;
+    schema:description "Businesses that provide services to delivery personnel" .
+
+dlvr:BusinessClients rdf:type dlvr:CustomerCategories ;
+    schema:name "Business Clients" ;
+    schema:description "Businesses that require delivery services" .
+
+# Detailed Customer Segments
+dlvr:VendorSegment rdf:type dlvr:CustomerSegment ;
+    schema:name "Vendors" ;
+    schema:description "Businesses that need delivery services" ;
+    dlvr:belongsTo dlvr:BusinessClients .
+
+dlvr:VendorSegment dlvr:includes dlvr:FoodVendors ;
+    dlvr:includes dlvr:EcommerceVendors .
+
+dlvr:FoodVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Food Vendors" ;
+    schema:description "Businesses that sell food products" .
+
+dlvr:FoodVendors dlvr:includes dlvr:CookedMealsVendors ;
+    dlvr:includes dlvr:GroceryVendors ;
+    dlvr:includes dlvr:StreetFoodVendors .
+
+dlvr:CookedMealsVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Cooked Meals Vendors" .
+
+dlvr:GroceryVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Grocery Vendors" .
+
+dlvr:GroceryVendors dlvr:includes dlvr:MarketVendors ;
+    dlvr:includes dlvr:FarmToDoorVendors .
+
+dlvr:MarketVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Market Vendors" .
+
+dlvr:FarmToDoorVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Farm to Door Vendors" .
+
+dlvr:StreetFoodVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "Street Food Vendors" .
+
+dlvr:EcommerceVendors rdf:type dlvr:CustomerSegment ;
+    schema:name "E-commerce Vendors" .
+
+dlvr:DeliveryAgentSegment rdf:type dlvr:CustomerSegment ;
+    schema:name "Delivery Agents" ;
+    schema:description "Individuals and businesses that fulfill deliveries" ;
+    dlvr:belongsTo dlvr:DeliveryPersonnel .
+
+dlvr:DeliveryAgentSegment dlvr:includes dlvr:DeliveryOperatorAgent ;
+    dlvr:includes dlvr:FleetManagerAgent ;
+    dlvr:includes dlvr:RiderAgent .
+
+dlvr:DeliveryOperatorAgent rdf:type dlvr:CustomerSegment ;
+    schema:name "Delivery Operator" ;
+    schema:description "Manages multiple delivery operations" .
+
+dlvr:FleetManagerAgent rdf:type dlvr:CustomerSegment ;
+    schema:name "Fleet Manager" ;
+    schema:description "Manages a fleet of delivery vehicles and riders" .
+
+dlvr:RiderAgent rdf:type dlvr:CustomerSegment ;
+    schema:name "Rider" ;
+    schema:description "Individual who performs the actual delivery" .
+
+dlvr:ComplimentaryServiceProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Complimentary Delivery Service Providers" ;
+    schema:description "Businesses that support delivery operations" ;
+    dlvr:belongsTo dlvr:ServiceProviders .
+
+dlvr:ComplimentaryServiceProviders dlvr:includes dlvr:TrackingDeviceProviders ;
+    dlvr:includes dlvr:BikeProviders ;
+    dlvr:includes dlvr:DeliveryBoxProviders ;
+    dlvr:includes dlvr:DeliveryBagProviders ;
+    dlvr:includes dlvr:DeliveryVehicleServiceProviders .
+
+dlvr:TrackingDeviceProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Tracking Device Providers" ;
+    schema:description "Provide GPS and tracking technology for deliveries" .
+
+dlvr:BikeProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Bike Providers" ;
+    schema:description "Provide and maintain bikes for delivery" .
+
+dlvr:DeliveryBoxProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Delivery Box Providers" ;
+    schema:description "Manufacture and supply delivery boxes" .
+
+dlvr:DeliveryBagProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Delivery Bag Providers" ;
+    schema:description "Manufacture and supply delivery bags" .
+
+dlvr:DeliveryVehicleServiceProviders rdf:type dlvr:CustomerSegment ;
+    schema:name "Delivery Vehicle Service Providers" ;
+    schema:description "Provide maintenance and repair services for delivery vehicles" .
+
+# DLVR Products
+dlvr:DLVRProducts rdf:type rdfs:Class ;
+    rdfs:subClassOf dlvr:Product ;
+    rdfs:label "DLVR Products" ;
+    rdfs:comment "Products developed and offered by DLVR Logistics" .
+
+dlvr:DLVRVendorApp rdf:type dlvr:DLVRProducts ;
+    schema:name "DLVR Vendor App" ;
+    schema:description "A tool for vendors to connect with delivery agents, book deliveries (ahead or express), and track pickup/delivery updates." ;
+    schema:slogan "If you sell products, the DLVR Vendor App links you with reliable agents to deliver to your customers. Book ahead or express deliveries. Get updates on pickup and delivery. Relax, and focus on your main business." ;
+    dlvr:status "In Development" ;
+    dlvr:targetAudience dlvr:VendorSegment ;
+    dlvr:hasFeature [
+        a dlvr:ProductFeature ;
+        schema:name "Delivery Booking" ;
+        schema:description "Book ahead or express deliveries"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Delivery Tracking" ;
+        schema:description "Get updates on pickup and delivery"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Agent Connection" ;
+        schema:description "Connect with reliable delivery agents"
+    ] .
+
+dlvr:DLVRPartnerApp rdf:type dlvr:DLVRProducts ;
+    schema:name "DLVR Partner App" ;
+    schema:description "An app for delivery businesses to accept and manage deliveries, share details via WhatsApp, and track payments." ;
+    schema:slogan "Growing delivery businesses can now accept new deliveries, complete them and get paid with the DLVR Partner App. Get new deliveries from customers, easy. Share delivery details via whatsapp. Get paid & track payments." ;
+    dlvr:status "In Development" ;
+    dlvr:targetAudience dlvr:DeliveryAgentSegment ;
+    dlvr:hasFeature [
+        a dlvr:ProductFeature ;
+        schema:name "Delivery Management" ;
+        schema:description "Accept and manage new deliveries"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "WhatsApp Integration" ;
+        schema:description "Share delivery details via WhatsApp"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Payment Tracking" ;
+        schema:description "Get paid and track payments"
+    ] .
+
+dlvr:PersonalizedBookingForm rdf:type dlvr:DLVRProducts ;
+    schema:name "Personalized Booking Form" ;
+    schema:description "A customizable form for delivery businesses without websites to receive customer delivery requests, collect payments, and set state-specific pricing." ;
+    schema:slogan "Delivery Business with No website? No problem! Use your personal Booking Form to get new delivery requests from your customers. Share your link so they can book a delivery directly. Collect payments securely. Customized profile and link to showcase your brand. Set your pricing per state." ;
+    dlvr:status "In Development" ;
+    dlvr:targetAudience dlvr:DeliveryAgentSegment ;
+    dlvr:hasFeature [
+        a dlvr:ProductFeature ;
+        schema:name "Customizable Form" ;
+        schema:description "Customized profile and link to showcase your brand"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Direct Booking" ;
+        schema:description "Customers can book a delivery directly"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Secure Payments" ;
+        schema:description "Collect payments securely"
+    ] ,
+    [
+        a dlvr:ProductFeature ;
+        schema:name "Custom Pricing" ;
+        schema:description "Set your pricing per state"
+    ] .
+
+dlvr:DLVRPriceChecker rdf:type dlvr:DLVRProducts ;
+    schema:name "DLVR Price Checker" ;
+    schema:description "A forthcoming tool to compare prices for local deliveries." ;
+    schema:slogan "Our Price Checker to compare prices for local deliveries near you is coming soon." ;
+    dlvr:status "Planned" ;
+    dlvr:targetAudience dlvr:VendorSegment, dlvr:DeliveryAgentSegment ;
+    dlvr:hasFeature [
+        a dlvr:ProductFeature ;
+        schema:name "Price Comparison" ;
+        schema:description "Compare prices for local deliveries near you"
+    ] .
+
+# Product Feature Class
+dlvr:ProductFeature rdf:type rdfs:Class ;
+    rdfs:label "Product Feature" ;
+    rdfs:comment "Feature or functionality of a product" .
+
+# Status Property
+dlvr:status rdf:type rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:comment "Development status of a product or service" .
+
+# Target Audience Property
+dlvr:targetAudience rdf:type rdf:Property ;
+    rdfs:label "Target Audience" ;
+    rdfs:comment "Target audience or customer segment for a product" .
+
+# Has Feature Property
+dlvr:hasFeature rdf:type rdf:Property ;
+    rdfs:label "Has Feature" ;
+    rdfs:comment "Relates a product to its features" .
+
+dlvr:TrackingDeviceService rdf:type schema:Service ;
+    schema:name "Tracking Devices" ;
+    schema:description "Hardware for tracking deliveries" .
+
+dlvr:DeliveryBagService rdf:type schema:Service ;
+    schema:name "Delivery Bags" ;
+    schema:description "Specialized bags for delivery agents" .
+
+dlvr:DeliveryBoxService rdf:type schema:Service ;
+    schema:name "Delivery Boxes" ;
+    schema:description "Specialized boxes for delivery agents" .
+
+dlvr:ConsultationService rdf:type schema:Service ;
+    schema:name "Consultation Services" .
+
+dlvr:ConsultationService dlvr:includes dlvr:AppDevelopmentConsultation ;
+    dlvr:includes dlvr:LogisticsBusinessConsultation ;
+    dlvr:includes dlvr:DataAnalyticsConsultation .
+
+dlvr:AppDevelopmentConsultation rdf:type schema:Service ;
+    schema:name "Application Development Consultation" .
+
+dlvr:LogisticsBusinessConsultation rdf:type schema:Service ;
+    schema:name "Start Logistics Business Consultation" .
+
+dlvr:DataAnalyticsConsultation rdf:type schema:Service ;
+    schema:name "Custom Data Analytics Consultation" .
+
+dlvr:FinancingService rdf:type schema:Service ;
+    schema:name "Financing Services" .
+
+dlvr:FinancingService dlvr:includes dlvr:SmartphoneFinancing ;
+    dlvr:includes dlvr:VehicleFinancing ;
+    dlvr:includes dlvr:BusinessFinancing ;
+    dlvr:includes dlvr:AccessoriesFinancing .
+
+dlvr:SmartphoneFinancing rdf:type schema:Service ;
+    schema:name "Smartphone Financing" .
+
+dlvr:VehicleFinancing rdf:type schema:Service ;
+    schema:name "Vehicle Financing" .
+
+dlvr:BusinessFinancing rdf:type schema:Service ;
+    schema:name "Business Financing" .
+
+dlvr:AccessoriesFinancing rdf:type schema:Service ;
+    schema:name "Accessories Financing" .
+
+# Key Activities
+dlvr:ContentCreation rdf:type dlvr:KeyActivity ;
+    schema:name "Content Creation" ;
+    schema:description "Creating content for marketing and educational purposes" .
+
+dlvr:ContentCreation dlvr:includes dlvr:TopicSelection .
+
+dlvr:TopicSelection rdf:type dlvr:KeyActivity ;
+    schema:name "Topic Selection" .
+
+dlvr:ContentMarketing rdf:type dlvr:KeyActivity ;
+    schema:name "Content Marketing" ;
+    schema:description "Marketing through content distribution" .
+
+dlvr:ProductDevelopment rdf:type dlvr:KeyActivity ;
+    schema:name "Product Development" ;
+    schema:description "Creating and improving DLVR's products" .
+
+dlvr:ProductDevelopment dlvr:includes dlvr:Requirements ;
+    dlvr:includes dlvr:Design ;
+    dlvr:includes dlvr:Development .
+
+dlvr:Requirements rdf:type dlvr:KeyActivity ;
+    schema:name "Requirements Gathering" .
+
+dlvr:Design rdf:type dlvr:KeyActivity ;
+    schema:name "Design" .
+
+dlvr:Development rdf:type dlvr:KeyActivity ;
+    schema:name "Development" .
+
+dlvr:MarketResearch rdf:type dlvr:KeyActivity ;
+    schema:name "Market/Marketing Research" ;
+    schema:description "Researching market trends and marketing strategies" .
+
+# Key Resources
+dlvr:IntellectualResources rdf:type schema:KeyResource ;
+    schema:name "Intellectual Resources" .
+
+dlvr:IntellectualResources dlvr:includes dlvr:BrandResource ;
+    dlvr:includes dlvr:PatentsResource ;
+    dlvr:includes dlvr:CopyrightResource ;
+    dlvr:includes dlvr:DataResource .
+
+dlvr:BrandResource rdf:type schema:KeyResource ;
+    schema:name "Brand" .
+
+dlvr:BrandResource dlvr:hasBrandElement dlvr:BrandColors ;
+    dlvr:hasBrandElement dlvr:BrandTagline ;
+    dlvr:hasBrandElement dlvr:BrandLogos ;
+    dlvr:hasBrandElement dlvr:BrandContact .
+
+dlvr:BrandColors rdf:type dlvr:Brand ;
+    schema:name "Brand Colors" ;
+    schema:description "Teal (#3ac3b1), Neon Blue (#58cced), Light Blue (#1261a0), Dark Blue (#072f5f)" .
+
+dlvr:BrandTagline rdf:type dlvr:Brand ;
+    schema:name "Brand Tagline" .
+
+dlvr:BrandLogos rdf:type dlvr:Brand ;
+    schema:name "Brand Logos" .
+
+dlvr:BrandContact rdf:type dlvr:Brand ;
+    schema:name "Brand Contact Information" .
+
+dlvr:PatentsResource rdf:type schema:KeyResource ;
+    schema:name "Patents" .
+
+dlvr:CopyrightResource rdf:type schema:KeyResource ;
+    schema:name "Copyright" .
+
+dlvr:DataResource rdf:type schema:KeyResource ;
+    schema:name "Data" .
+
+dlvr:HumanResources rdf:type schema:KeyResource ;
+    schema:name "Human Resources" .
+
+dlvr:FinancialResources rdf:type schema:KeyResource ;
+    schema:name "Financial Resources" .
+
+dlvr:FinancialResources dlvr:includes dlvr:BankAccount .
+
+dlvr:BankAccount rdf:type schema:KeyResource ;
+    schema:name "Bank Account" .
+
+dlvr:BankAccount dlvr:includes dlvr:SalesAccount ;
+    dlvr:includes dlvr:OperationAccount .
+
+dlvr:SalesAccount rdf:type schema:KeyResource ;
+    schema:name "Sales Account" .
+
+dlvr:OperationAccount rdf:type schema:KeyResource ;
+    schema:name "Operation Account" .
+
+dlvr:PlatformResources rdf:type schema:KeyResource ;
+    schema:name "Platform Resources" .
+
+dlvr:PlatformResources dlvr:includes dlvr:RiderAppResource .
+
+dlvr:RiderAppResource rdf:type schema:KeyResource ;
+    schema:name "Rider App" .
+
+# Key Partners
+dlvr:DeliveryAssociations rdf:type dlvr:KeyPartner ;
+    schema:name "Delivery Associations" .
+
+dlvr:DeliveryAssociations dlvr:includes dlvr:ALDSO ;
+    dlvr:includes dlvr:KingsAssociation .
+
+dlvr:ALDSO rdf:type dlvr:KeyPartner ;
+    schema:name "ALDSO" .
+
+dlvr:KingsAssociation rdf:type dlvr:KeyPartner ;
+    schema:name "Kings Association" .
+
+dlvr:DeliveryOperators rdf:type dlvr:KeyPartner ;
+    schema:name "Delivery Operators" .
+
+dlvr:SubjectMatterExperts rdf:type dlvr:KeyPartner ;
+    schema:name "Subject Matter Experts" .
+
+dlvr:SubjectMatterExperts dlvr:includes dlvr:OmaIsabiDelivery ;
+    dlvr:includes dlvr:King ;
+    dlvr:includes dlvr:Logipreneurs ;
+    dlvr:includes dlvr:Amanda .
+
+dlvr:OmaIsabiDelivery rdf:type dlvr:KeyPartner ;
+    schema:name "Oma - Isabi Delivery" .
+
+dlvr:King rdf:type dlvr:KeyPartner ;
+    schema:name "King" .
+
+dlvr:Logipreneurs rdf:type dlvr:KeyPartner ;
+    schema:name "Logipreneurs" .
+
+dlvr:Amanda rdf:type dlvr:KeyPartner ;
+    schema:name "Amanda" .
+
+dlvr:ServiceProviders rdf:type dlvr:KeyPartner ;
+    schema:name "Service Providers" .
+
+# Customer Relationships
+dlvr:SelfService rdf:type schema:CustomerRelationship ;
+    schema:name "Self-Service" ;
+    schema:description "Allowing customers to serve themselves" .
+
+dlvr:PersonalizedService rdf:type schema:CustomerRelationship ;
+    schema:name "Personalized Service" ;
+    schema:description "Customized service for specific customer needs" .
+
+dlvr:Communities rdf:type schema:CustomerRelationship ;
+    schema:name "Communities" ;
+    schema:description "Building communities around the service" .
+
+dlvr:AutomatedServices rdf:type schema:CustomerRelationship ;
+    schema:name "Automated Services" ;
+    schema:description "Services delivered through automation" .
+
+# Channels
+dlvr:DLVRChannels rdf:type schema:Channel ;
+    schema:name "DLVR Channels" ;
+    schema:description "Channels for reaching and serving customers" .
+
+dlvr:DLVRChannels dlvr:hasCustomerStage dlvr:AwarenessStage ;
+    dlvr:hasCustomerStage dlvr:EvaluationStage ;
+    dlvr:hasCustomerStage dlvr:PurchaseStage ;
+    dlvr:hasCustomerStage dlvr:DeliveryStage ;
+    dlvr:hasCustomerStage dlvr:AfterSalesStage .
+
+dlvr:AwarenessStage rdf:type dlvr:CustomerStage ;
+    schema:name "Awareness Stage" ;
+    schema:description "When customers become aware of the service" .
+
+dlvr:AwarenessStage dlvr:uses dlvr:FacebookChannel ;
+    dlvr:uses dlvr:InstagramChannel ;
+    dlvr:uses dlvr:PhoneChannel ;
+    dlvr:uses dlvr:EmailMarketingChannel ;
+    dlvr:uses dlvr:WhatsAppChannel .
+
+dlvr:FacebookChannel rdf:type schema:Channel ;
+    schema:name "Facebook" .
+
+dlvr:InstagramChannel rdf:type schema:Channel ;
+    schema:name "Instagram" .
+
+dlvr:PhoneChannel rdf:type schema:Channel ;
+    schema:name "Phone Number" .
+
+dlvr:EmailMarketingChannel rdf:type schema:Channel ;
+    schema:name "Email Marketing" .
+
+dlvr:WhatsAppChannel rdf:type schema:Channel ;
+    schema:name "WhatsApp" .
+
+dlvr:EvaluationStage rdf:type dlvr:CustomerStage ;
+    schema:name "Evaluation Stage" ;
+    schema:description "When customers evaluate the service" .
+
+dlvr:EvaluationStage dlvr:uses dlvr:WebsiteChannel ;
+    dlvr:uses dlvr:WhatsAppChannel ;
+    dlvr:uses dlvr:AppChannel ;
+    dlvr:uses dlvr:BlogChannel .
+
+dlvr:WebsiteChannel rdf:type schema:Channel ;
+    schema:name "Website" .
+
+dlvr:AppChannel rdf:type schema:Channel ;
+    schema:name "Mobile App" .
+
+dlvr:BlogChannel rdf:type schema:Channel ;
+    schema:name "Blog" .
+
+dlvr:PurchaseStage rdf:type dlvr:CustomerStage ;
+    schema:name "Purchase Stage" ;
+    schema:description "When customers purchase the service" .
+
+dlvr:PurchaseStage dlvr:uses dlvr:WebsiteChannel .
+
+dlvr:DeliveryStage rdf:type dlvr:CustomerStage ;
+    schema:name "Delivery Stage" ;
+    schema:description "When the service is delivered" .
+
+dlvr:DeliveryStage dlvr:uses dlvr:AppChannel ;
+    dlvr:uses dlvr:WebsiteChannel ;
+    dlvr:uses dlvr:BlogChannel .
+
+dlvr:AfterSalesStage rdf:type dlvr:CustomerStage ;
+    schema:name "After-Sales Stage" ;
+    schema:description "Service after the sale" .
+
+dlvr:AfterSalesStage dlvr:uses dlvr:WhatsAppChannel ;
+    dlvr:uses dlvr:BlogChannel ;
+    dlvr:uses dlvr:EmailChannel .
+
+dlvr:EmailChannel rdf:type schema:Channel ;
+    schema:name "Email" .
+
+# Cost Structure
+dlvr:SalariesCost rdf:type schema:CostStructure ;
+    schema:name "Salaries" ;
+    schema:description "Cost of employee salaries" .
+
+dlvr:OperationCost rdf:type schema:CostStructure ;
+    schema:name "Operation" ;
+    schema:description "Cost of day-to-day operations" .
+
+dlvr:EquipmentCost rdf:type schema:CostStructure ;
+    schema:name "Equipment" ;
+    schema:description "Cost of equipment" .
+
+dlvr:LicensesCost rdf:type schema:CostStructure ;
+    schema:name "Licenses" ;
+    schema:description "Cost of software and business licenses" .
+
+dlvr:InfrastructureCost rdf:type schema:CostStructure ;
+    schema:name "Infrastructure" ;
+    schema:description "Cost of infrastructure" .
+
+dlvr:CommissionCost rdf:type schema:CostStructure ;
+    schema:name "Commission" ;
+    schema:description "Commission paid to partners" .
+
+dlvr:MarketingCost rdf:type schema:CostStructure ;
+    schema:name "Marketing" ;
+    schema:description "Cost of marketing activities" .
+
+# Revenue Streams
+dlvr:LogisticsServiceOffer rdf:type schema:Offer ;
+    schema:itemOffered schema:LogisticsService ;
+    schema:priceSpecification dlvr:DeliveryFees .
+
+schema:LogisticsService rdf:type schema:Service ;
+    schema:name "Last-Mile Delivery Service" ;
+    schema:description "Efficient and transparent delivery solutions." .
+
+dlvr:DeliveryFees rdf:type schema:RevenueStream ;
+    schema:name "Delivery Fees and Commissions" .
+
+dlvr:DeliveryFees dlvr:includes dlvr:PerDeliveryFee ;
+    dlvr:includes dlvr:SubscriptionFee ;
+    dlvr:includes dlvr:PartnerCommission .
+
+dlvr:PerDeliveryFee rdf:type schema:RevenueStream ;
+    schema:name "Charge Per Delivery Request" ;
+    schema:description "Fee charged for each delivery request" .
+
+dlvr:SubscriptionFee rdf:type schema:RevenueStream ;
+    schema:name "Monthly Subscription Charge" ;
+    schema:description "Regular subscription fee" .
+
+dlvr:SubscriptionFee dlvr:includes dlvr:MonthlyRate ;
+    dlvr:includes dlvr:YearlyRate .
+
+dlvr:MonthlyRate rdf:type schema:RevenueStream ;
+    schema:name "Monthly Rate" .
+
+dlvr:YearlyRate rdf:type schema:RevenueStream ;
+    schema:name "Yearly Rate" .
+
+dlvr:PartnerCommission rdf:type schema:RevenueStream ;
+    schema:name "Partner Commission" ;
+    schema:description "7.5% commission from partner service providers" .
